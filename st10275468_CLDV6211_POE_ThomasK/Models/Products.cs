@@ -34,5 +34,32 @@ namespace st10275468_CLDV6211_POE_ThomasK.Models
                 throw ex;
             }
         }
+
+        public static List<Products> GetProducts()
+        {
+            List<Products> products = new List<Products>();
+
+            using (SqlConnection con = new SqlConnection(con_string))
+            {
+                string sql = "SELECT * FROM Products";
+                SqlCommand cmd = new SqlCommand(sql, con);
+
+                con.Open();
+                SqlDataReader r = cmd.ExecuteReader();
+
+                while (r.Read())
+                {
+                    Products product = new Products();
+                    product.ProductID = Convert.ToInt32(r["ProductID"]);
+                    product.Name = r["ProductName"].ToString();
+                    product.Price = r["Price"].ToString();
+                    product.Catagory = r["Catagory"].ToString();
+                    product.Availability = r["Availability"].ToString();
+
+                    products.Add(product);
+                }
+            }
+            return products;
+        }
     }
 }
