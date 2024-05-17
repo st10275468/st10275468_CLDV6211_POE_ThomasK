@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@model int
+@{
+    ViewData["Title"] = "Home Page";
+    var UserID = ViewData["UserID"];
+    var products = ViewData["Products"] as List<st10275468_CLDV6211_POE_ThomasK.Models.Products>;
+
+}
+<!DOCTYPE html>
 <title>Home Page</title>
 <style>
     body {
@@ -28,11 +35,15 @@
         font-size: 20px;
     }
 </style>
+
 <html>
 
 <body>
-   
-   
+
+    @if (UserID != null)
+    {
+        <p>User ID: @UserID</p>
+    }
 
     <h1><b>KhumaloCraft Emporium</b></h1>
     
@@ -41,6 +52,39 @@
     <p class="p1">Explore our latest handcrafted products now and get 10% off of your first purchase.</p>
    
 </body>
+<h2>All Products</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Catagory</th>
+            <th>Availability</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in products)
+        {
+          <tr>
+              <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.Catagory</td>
+                <td>@product.Availability</td>
+                <td>
+                    <form asp-controller="Transaction" asp-action="PlaceOrder" method="post">
+                     <input type="hidden" name="UserID" value="@UserID"/>
+                     <input type="hidden" name="ProductID" value="@product.ProductID"/>
+                     <button type="sumbit">Place Order</button>
+                    </form>
+                </td>
+          </tr> 
+        }
+
+
+    </tbody>
+</table>
+
 </html>
 
 
