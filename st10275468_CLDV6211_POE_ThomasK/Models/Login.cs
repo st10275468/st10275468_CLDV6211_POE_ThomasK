@@ -33,8 +33,9 @@ namespace st10275468_CLDV6211_POE_ThomasK.Models
                     throw ex;
                 }
 
-                return userID;
             }
+
+            return userID;
 
         }
 

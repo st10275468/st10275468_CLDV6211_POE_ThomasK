@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 namespace st10275468_CLDV6211_POE_ThomasK.Models
 {
-    public class Products : Controller
+    public class Products
     {
         public static string con_string = "Server=tcp:st10275468-server.database.windows.net,1433;Initial Catalog=st10275468-database;Persist Security Info=False;User ID=st10275468;Password=Capecobras@1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
         public static SqlConnection con = new SqlConnection(con_string);
