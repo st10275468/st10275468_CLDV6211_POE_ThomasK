@@ -13,7 +13,6 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
         }
 
         [HttpPost]
-
         public ActionResult Privacy(string password, string name)
         {
             var loginModel = new Login();
