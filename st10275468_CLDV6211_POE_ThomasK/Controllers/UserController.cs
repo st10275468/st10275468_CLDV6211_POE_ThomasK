@@ -19,5 +19,9 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
         {
             return View(userTbl);
         }
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
     }
 }

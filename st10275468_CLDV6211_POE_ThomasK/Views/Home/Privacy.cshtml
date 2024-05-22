@@ -1,10 +1,25 @@
-﻿<!DOCTYPE html>
+﻿@model st10275468_CLDV6211_POE_ThomasK.Models.Users
+@{
+    ViewData["Title"] = "Login";
+}
+<!DOCTYPE html>
 <html>
-<title>This is privacy statement</title>
+<h1>@ViewData["Title"]</h1>
+
+<div class="text-center">
+
+    <h1>class="display-4">Login</h1>
+    <p>If you dont have an account <a href="https://localhost:7039/User/AboutUs">Sign Up</a> for a new account.</p>
+
+</div>
+
 <body>
-
-    <h1>Privacy page</h1>
-    <p>This is a paragraph.</p>
-
+    <form asp-controller="Login" asp-action="Privacy" method="post">
+    <p>Please enter your first name and password:</p>
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="text" name="password" placeholder="Password" required>
+    <button type="submit">Submit</button>    
+</form>
+    
 </body>
 </html>

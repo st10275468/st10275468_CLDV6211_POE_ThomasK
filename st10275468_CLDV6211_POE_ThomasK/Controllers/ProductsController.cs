@@ -13,7 +13,9 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
         [HttpPost]
         public ActionResult MyWork(Products Products)
         {
-            var result2 = producttbl.insert_product(Products);
+            int? UserID = HttpContext.Session.GetInt32("UserID");
+            var result2 = producttbl.insert_product(Products, UserID);
+           
             return RedirectToAction("Index", "Home");
 
 
@@ -25,7 +27,7 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
             return View(producttbl);
         }
 
+       
 
-      
     }
 }

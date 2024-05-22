@@ -29,6 +29,14 @@
         padding-top: 50px;
     }
 
+    .p2 {
+        text-align: left;
+        font-size: 30px;
+        margin-left: 400px;
+        margin-right: 200px;
+        padding-top: 50px;
+    }
+
     p {
         text-align: center;
         color: black;
@@ -42,7 +50,7 @@
 
     @if (UserID != null)
     {
-        <p>User ID: @UserID</p>
+        <p2>User ID: @UserID</p2>
     }
 
     <h1><b>KhumaloCraft Emporium</b></h1>
@@ -52,38 +60,7 @@
     <p class="p1">Explore our latest handcrafted products now and get 10% off of your first purchase.</p>
    
 </body>
-<h2>All Products</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Catagory</th>
-            <th>Availability</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var product in products)
-        {
-          <tr>
-              <td>@product.Name</td>
-                <td>@product.Price</td>
-                <td>@product.Catagory</td>
-                <td>@product.Availability</td>
-                <td>
-                    <form asp-controller="Transaction" asp-action="PlaceOrder" method="post">
-                     <input type="hidden" name="UserID" value="@UserID"/>
-                     <input type="hidden" name="ProductID" value="@product.ProductID"/>
-                     <button type="sumbit">Place Order</button>
-                    </form>
-                </td>
-          </tr> 
-        }
 
-
-    </tbody>
-</table>
 
 </html>
 

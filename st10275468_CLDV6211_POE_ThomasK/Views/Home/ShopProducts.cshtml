@@ -1,0 +1,131 @@
+﻿@model st10275468_CLDV6211_POE_ThomasK.Models.Products
+@{
+    ViewData["Title"] = "ShopProducts";
+    var UserID = ViewData["UserID"];
+    var products = ViewData["Products"] as List<st10275468_CLDV6211_POE_ThomasK.Models.Products>;
+}
+
+<style>
+    body {
+        background-image: url("/Images/MyWorkBackground.jpg");
+        background-size: 100% 100vh;
+        background-repeat: no-repeat;
+    }
+
+    h1 {
+        text-align: center;
+        padding-left: 135px;
+        padding-top: 20px;
+        font-size: 60px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    p {
+        font-size: 22px;
+        text-align: center;
+        padding-right: 200px;
+        padding-left: 200px;
+    }
+
+    .div1 {
+        background-color: black;
+        position: absolute;
+        left: 0;
+        right: 0;
+        padding-top: 100px;
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-bottom: 20px;
+        display: flex;
+    }
+
+    .p1 {
+        text-align: left;
+        padding-top: 10px;
+        padding-left: 10px;
+        -webkit-text-fill-color: white;
+    }
+    .tb {
+        padding-left: 300px;
+        padding-top: 20px;
+        font-size:25px;
+        
+        
+    }
+
+    td{
+        border: 2px solid black;
+
+    }
+    th{
+        border: 2px solid Black;
+
+    }
+    
+
+
+
+
+    div p {
+        overflow: auto;
+    }
+</style>
+<html>
+
+<body>
+    <h1>Explore our handcrafted products below</h1>
+    <div class="tb">
+        
+        <table class="table">
+            <thead>
+                <tr style="border: 2px solid black;">
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>In stock</th>
+                    <th>Order</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in products)
+                {
+                    <tr style="border: 2px solid black;" >
+                        <td>@product.Name</td>
+                        <td>@product.Price</td>
+                        <td>@product.Catagory</td>
+
+                        
+                            @if (product.Availability == "True")
+                        {
+                            <td>Yes</td>
+                            <td>
+                                <form asp-controller="Transaction" asp-action="PlaceOrder" method="post">
+                                    <input type="hidden" name="UserID" value="@UserID" />
+                                    <input type="hidden" name="ProductID" value="@product.ProductID" />
+                                    <button type="submit">Place Order</button>
+                                </form>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>No</td>
+                            <td>Out of stock</td>
+                        }
+
+                      
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+
+    </div>
+</body>
+
+
+</html>

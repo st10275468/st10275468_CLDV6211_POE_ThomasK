@@ -1,4 +1,26 @@
-﻿<!DOCTYPE html>
+﻿@model st10275468_CLDV6211_POE_ThomasK.Models.Products
+@{
+    ViewData["Title"] = "Insert new products";
+   
+}
+
+<h1>Work</h1>
+<body>
+    
+    <form asp-controller="Products" asp-action="MyWork" method="post">
+        <p>Insert new products</p>
+        <input type="text" name="Name" placeholder="Name" required>
+        <input type="text" name="Availability" placeholder="Availability" required>
+        <input type="text" name="Price" placeholder="Price" required>
+        <input type="text" name="Catagory" placeholder="Catagory" required>
+        <button type="submit">Submit</button>
+
+    </form>
+</body>
+
+
+
+<!DOCTYPE html>
 <title>This is my work page</title>
 <style>
     body {
@@ -46,133 +68,14 @@
         -webkit-text-fill-color: white;
     }
 
-    .prod-container {
-        padding-top: 30px;
-        position: absolute;
-        left: 0;
-        right: 0;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        background-color: black;
-        -webkit-text-fill-color: white;
-    }
+   
+    
+    
 
-    .product {
-        width: 50%;
-        margin-bottom: 20px;
-        border: 1px solid black;
-        border-radius: 5px;
-        padding: 5px;
-        box-sizing: border-box;
-    }
-
-        .product img {
-            width: 60%;
-            height: auto;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-    .prod-title {
-        font-size: 20px;
-        margin: 0;
-    }
- div img {
-        float: left;
-        margin-right: 10px;
-        margin-left: 20px;
-    }
 
     div p {
         overflow: auto;
     }
 </style>
-<html>
-
-<body>
-    <div>
-    <h1><b>Explore our handcrafted products below</b><br /><br /></h1>
-    
-    
-    </div> 
-   
-
-
-<div class="prod-container">
-    
-    <div class="product">
-            <img src="/Images/WVase.jpg" alt="White ceramic Vase">
-        <h3 class="prod-title">Product: White ceramic vase <br /> Price: R4000<br /> Craftsman: Catherine Swart</p></h3>
-            <!--Reference for picture used:
-             Amazon, n.d. Amazon. [Online]Available at: https://www.amazon.com/Handcrafted-Creative-Centerpieces-Housewarming-Handle-Height/dp/B0BZ7KTDZ5?th=1 [Accessed 31 March 2024].
-
-             -->
-
-    </div>
-    <div class="product">
-            <img src="/Images/GVase.webp" alt="Grey ceramic vase">
-            <h3 class="prod-title">Product: Grey ceramic vase <br /> Price: R5500<br /> Craftsman: Catherine Swart</p></h3>
-            <!--Reference for picture used:
-             Michelle, n.d. Euna. [Online] Available at: https://eunaliving.com/products/handmade-vintage-gilt-silver-ceramic-vase [Accessed 31 March 2024].
-             -->
-
-    </div>
-    <div class="product">
-            <img src="/Images/Chand1.jpg" alt="Wooden Chandlier">
-        <h3 class="prod-title">Product: Wooden chandelier <br /> Price: R6000<br /> Craftsman: Aiden Hills</p></h3>
-            <!--Reference for picture used:
-             Furnishings, P. F., n.d. Putti Fine Furnishings. [Online]Available at: https://www.putti.ca/products/wooden-beaded-chandelier-1 [Accessed 31 March 2024].
-
-             -->
-
-    </div>
-    <div class="product">
-            <img src="/Images/Chand2.jpg" alt="Product Name">
-            <h3 class="prod-title">Product: Wooden chandelier <br /> Price: R10 000<br /> Craftsman: Aiden Hills</p></h3>
-            <!--Reference for picture used:
-            Homary, n.d. Homary. [Online] Available at: https://www.homary.com/item/farmhouse-french-country-1light-distressed-white-wood-beaded-pendant-light-metal-in-brown-ceiling-light-10604.html [Accessed 31 March 2024].
-            .
-             -->
-
-    </div>
-      
-        <div class="product">
-            <img src="/Images/TeaPot.webp" alt="Ceramic Tea Pot">
-            <h3 class="prod-title">Product: Ceramic tea pot <br /> Price: R1500<br /> Craftsman: James Khumalo</p></h3>
-            <!--Reference for picture used:
-            Ceramics, S. T., n.d. Song Tea Ceramics. [Online]Available at: https://songtea.com/products/blue-hares-fur [Accessed 31 March 2024].
-
-             -->
-
-        </div>
-        <div class="product">
-            <img src="/Images/TeaCup1.webp" alt="Ceramic Tea Pot">
-            <h3 class="prod-title">Product: Ceramic tea cup<br /> Price: R800<br /> Craftsman: James Khumalo</p></h3>
-            <!--Reference for picture used:
-            Resources, C. a. P. A. a., 2018. 1001 pots, Quebec – Exposition de céramique. [Online] Available at: https://www.veniceclayartists.com/1001-pots-quebec-exposition-de-ceramique/ [Accessed 31 March 2024].
-
-             -->
-
-        </div>
-       
-        
-        <div class="product">
-            <img src="/Images/WoodSet.jpg" alt="Wooden Cutlery">
-            <h3 class="prod-title">Product: Wooden cutlery set <br /> Price: R500<br /> Craftsman: Jeff Smith</p></h3>
-            <!--Reference for picture used:
-            All4Hiking, 2019. All4Hiking.com. [Online] Available at: https://all4hiking.com/products/beauty-kate-wooden-kitchen-utensil-set-5-cooking-utensils-spatula-spoons-for-cooking-nonstick-cookware-100-handmade-by-natural-teak-wood-without-painting/ [Accessed 31 March 2024].
-
-             -->
-
-        </div>
-   
-</div>
-
-
-</body>
-
-
-</html>
 
 

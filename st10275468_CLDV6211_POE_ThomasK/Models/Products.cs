@@ -1,29 +1,44 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using st10275468_CLDV6211_POE_ThomasK.Controllers;
 using System.Data.SqlClient;
+using System.Numerics;
+using System.Xml.Linq;
 namespace st10275468_CLDV6211_POE_ThomasK.Models
 {
     public class Products
     {
+        public Products() { }
+        
         public static string con_string = "Server=tcp:st10275468-server.database.windows.net,1433;Initial Catalog=st10275468-database;Persist Security Info=False;User ID=st10275468;Password=Capecobras@1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
         public static SqlConnection con = new SqlConnection(con_string);
         
+        
+
         public int ProductID { get; set; }
         public string Name { get; set; }
         public string Price { get; set; }
         public string Catagory { get; set; }
         public string Availability {  get; set; }
 
-        public int insert_product(Products p)
+        public int UserID { get; set; }
+
+
+        public int insert_product(Products p, int? UserID)
         {
+            
+
             try
             {
-                string sql = "INSERT INTO Products (ProductName, Price, Catagory, Availability) VALUES (@Name, @Price, @Catagory, @Availability)";
+                string sql = "INSERT INTO Products (ProductName, Availability, Price, Catagory, UserID) VALUES (@Name, @Availability, @Price, @Catagory, @UserID)";
                 SqlCommand cmd = new SqlCommand(sql, con);
 
                 cmd.Parameters.AddWithValue("@Name", p.Name);
+                cmd.Parameters.AddWithValue("@Availability", p.Availability);
                 cmd.Parameters.AddWithValue("@Price", p.Price);
                 cmd.Parameters.AddWithValue("@Catagory", p.Catagory);
-                cmd.Parameters.AddWithValue("@Availability", p.Availability);
+                cmd.Parameters.AddWithValue("@UserID", UserID);
+
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();

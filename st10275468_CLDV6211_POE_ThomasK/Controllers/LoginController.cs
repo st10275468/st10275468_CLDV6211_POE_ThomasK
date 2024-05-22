@@ -13,20 +13,22 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
         }
 
         [HttpPost]
-        public ActionResult Privacy(string password, string name)
+        public ActionResult Privacy(string name, string password)
         {
             var loginModel = new Login();
-            int userID = loginModel.SelectUser(password, name);
+            int userID = loginModel.SelectUser(name, password);
             if (userID != -1)
             {
 
-                HttpContext.Session.SetInt32("userID", userID);
+                HttpContext.Session.SetInt32("UserID", userID);
                 return RedirectToAction("Index", "Home");
+
             }
             else
             {
                 return View("LoginFailed");
             }
+
         }
 
         
