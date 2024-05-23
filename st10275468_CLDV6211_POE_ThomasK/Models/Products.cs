@@ -21,32 +21,45 @@ namespace st10275468_CLDV6211_POE_ThomasK.Models
         public string Catagory { get; set; }
         public string Availability {  get; set; }
 
-        public int UserID { get; set; }
+        public int? UserID { get; set; }
 
 
         public int insert_product(Products p, int? UserID)
         {
-            
 
+            string sql = "INSERT INTO Products (ProductName, Availability, Price, Catagory, UserID) VALUES (@Name, @Availability, @Price, @Catagory, @UserID)";
             try
             {
-                string sql = "INSERT INTO Products (ProductName, Availability, Price, Catagory, UserID) VALUES (@Name, @Availability, @Price, @Catagory, @UserID)";
-                SqlCommand cmd = new SqlCommand(sql, con);
+                using (SqlConnection con = new SqlConnection(con_string))
+                {
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
 
-                cmd.Parameters.AddWithValue("@Name", p.Name);
-                cmd.Parameters.AddWithValue("@Availability", p.Availability);
-                cmd.Parameters.AddWithValue("@Price", p.Price);
-                cmd.Parameters.AddWithValue("@Catagory", p.Catagory);
-                cmd.Parameters.AddWithValue("@UserID", UserID);
+                        cmd.Parameters.AddWithValue("@Name", p.Name);
+                        cmd.Parameters.AddWithValue("@Availability", p.Availability);
+                        cmd.Parameters.AddWithValue("@Price", p.Price);
+                        cmd.Parameters.AddWithValue("@Catagory", p.Catagory);
+                        cmd.Parameters.AddWithValue("@UserID", UserID);
 
-                con.Open();
-                int rowsAffected = cmd.ExecuteNonQuery();
-                con.Close();
-                return rowsAffected;
+                        con.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        con.Close();
+                        return rowsAffected;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.Error.WriteLine($"SQL Error: {ex.Message}");
+
+                throw ex;
+
             }
             catch (Exception ex)
             {
-                throw ex;
+                // Handle all other exceptions here
+                Console.Error.WriteLine($"Error: {ex.Message}");
+                throw;
             }
         }
 

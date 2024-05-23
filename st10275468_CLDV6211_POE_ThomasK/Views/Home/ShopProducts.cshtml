@@ -1,7 +1,7 @@
 ﻿@model st10275468_CLDV6211_POE_ThomasK.Models.Products
 @{
     ViewData["Title"] = "ShopProducts";
-    var UserID = ViewData["UserID"];
+    var UserID = ViewData["UserID"] as string;
     var products = ViewData["Products"] as List<st10275468_CLDV6211_POE_ThomasK.Models.Products>;
 }
 

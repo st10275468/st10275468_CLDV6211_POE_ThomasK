@@ -20,17 +20,22 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
             int? UserID = _httpContextAccessor.HttpContext.Session.GetInt32("UserID");
             ViewData["UserID"] = UserID;
             return View();
+            
         }
 
         public IActionResult ShopProducts()
         {
+            var userID = HttpContext.User.Identity.Name;
             List<Products> products = Products.GetProducts();
             ViewData["products"] = products;
-           
-            
+            ViewData["UserID"] = userID;
+
             return View();
         }
-
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
        
         public IActionResult ContactUs()
         {

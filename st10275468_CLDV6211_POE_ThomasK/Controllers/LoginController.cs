@@ -13,7 +13,7 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
         }
 
         [HttpPost]
-        public ActionResult Privacy(string name, string password)
+        public ActionResult Log(string name, string password)
         {
             var loginModel = new Login();
             int userID = loginModel.SelectUser(name, password);

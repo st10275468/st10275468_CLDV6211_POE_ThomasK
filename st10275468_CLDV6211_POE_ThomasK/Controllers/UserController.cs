@@ -11,13 +11,19 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
         public ActionResult About(Users users)
         {
             var result = userTbl.insert_User(users);
-            return RedirectToAction("Privacy", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]
         public ActionResult About()
         {
             return View(userTbl);
+        }
+      
+
+        public IActionResult Index()
+        {
+            return View();
         }
         public IActionResult AboutUs()
         {
