@@ -12,7 +12,7 @@ namespace st10275468_CLDV6211_POE_ThomasK.Models
         public string Surname { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-
+        public int UserID { get; set; }
 
         public int insert_User(Users m)
         {

@@ -8,12 +8,12 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
     public class TransactionController : Controller
     {
         public int? UserID { get; set; }
-        IHttpContextAccessor htt = new HttpContextAccessor();
+        IHttpContextAccessor httpContextAccessor = new HttpContextAccessor();
         
         [HttpPost]
         public ActionResult PlaceOrder(string userID, int productID)
         {
-            UserID = htt.HttpContext.Session.GetInt32("UserID");
+            UserID = httpContextAccessor.HttpContext.Session.GetInt32("UserID");
             try
             {
                 

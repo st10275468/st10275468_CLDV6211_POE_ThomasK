@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration.UserSecrets;
 using st10275468_CLDV6211_POE_ThomasK.Models;
@@ -32,11 +33,21 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
 
             return View();
         }
+        public IActionResult MyOrders()
+        {
+            int? UserID = _httpContextAccessor.HttpContext.Session.GetInt32("UserID");
+            List<Orders> orders = Orders.GetOrders(UserID);
+            
+           
+
+            return View(orders);
+        }
         public IActionResult AboutUs()
         {
             return View();
         }
        
+
         public IActionResult ContactUs()
         {
             return View();
@@ -46,12 +57,9 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
         {
             return View();
         }
+      
 
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
