@@ -1,12 +1,73 @@
-﻿@model st10275468_CLDV6211_POE_ThomasK.Models.Products
+﻿@model IEnumerable<st10275468_CLDV6211_POE_ThomasK.Models.Products>
+
 @{
     ViewData["Title"] = "Insert new products";
-   
-}
-
-<h1>Work</h1>
-<body>
     
+}
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This is my work page</title>
+    <style>
+        body {
+            background-image: url("/Images/MyWorkBackground.jpg");
+            background-size: 100% 100vh;
+            background-repeat: no-repeat;
+        }
+
+        h1 {
+            text-align: center;
+            padding-top: 20px;
+            font-size: 45px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        p {
+            font-size: 22px;
+            text-align: center;
+            padding-right: 200px;
+            padding-left: 200px;
+        }
+
+        .div1 {
+            background-color: black;
+            position: absolute;
+            left: 0;
+            right: 0;
+            padding-top: 100px;
+            padding-right: 20px;
+            padding-left: 20px;
+            padding-bottom: 20px;
+            display: flex;
+        }
+
+        .p1 {
+            text-align: left;
+            padding-top: 10px;
+            padding-left: 10px;
+            -webkit-text-fill-color: white;
+        }
+
+
+
+
+
+
+        div p {
+            overflow: auto;
+        }
+    </style>
+    </head>
+
+<body>
+    <h1>Work</h1>
     <form asp-controller="Products" asp-action="MyWork" method="post">
         <p>Insert new products</p>
         <input type="text" name="Name" placeholder="Name" required>
@@ -16,66 +77,21 @@
         <button type="submit">Submit</button>
 
     </form>
+   
 </body>
 
 
 
-<!DOCTYPE html>
-<title>This is my work page</title>
-<style>
-    body {
-        background-image: url("/Images/MyWorkBackground.jpg");
-        background-size: 100% 100vh;
-        background-repeat: no-repeat;
-    }
-    h1 {
-        text-align: center;
-        
-        padding-top: 20px;
-        font-size: 45px;
-    }
-
-    h2 {
-        text-align: center;
-        margin-top: 50px;
-    }
-
-    p {
-        font-size: 22px;
-        text-align: center;
-        padding-right: 200px;
-        padding-left: 200px;
-       
-    }
-
-    .div1 {
-        background-color: black;
-        position: absolute;
-        left: 0;
-        right: 0;
-       
-        padding-top: 100px;
-        padding-right: 20px;
-        padding-left: 20px;
-        padding-bottom: 20px;
-        display: flex;
-    }
-
-    .p1 {
-        text-align: left;
-        padding-top: 10px;
-        padding-left: 10px;
-        -webkit-text-fill-color: white;
-    }
-
-   
-    
-    
 
 
-    div p {
-        overflow: auto;
-    }
-</style>
+<body>
+    <button onclick="navigateToPage()">View my product sales</button>
 
+    <script>
+        function navigateToPage() {
+            // Replace 'another-page.html' with the URL of the page you want to navigate to
+            window.location.href = 'ProductsOrders';
+        }
+    </script>
+</body>
 

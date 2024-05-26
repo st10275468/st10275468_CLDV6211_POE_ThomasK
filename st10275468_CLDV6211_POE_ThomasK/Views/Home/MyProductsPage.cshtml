@@ -1,0 +1,39 @@
+﻿@model List<st10275468_CLDV6211_POE_ThomasK.Models.MyProducts>
+@{
+    ViewData["Title"] = "MyProductsPage";
+    var products = ViewData["MyProducts"] as List<st10275468_CLDV6211_POE_ThomasK.Models.MyProducts>;
+}
+<h2>Your uploaded products</h2>
+<table class="table">
+    <thead>
+        <tr style="border: 2px solid black;">
+            <th>Product ID</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Availability</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+
+            @foreach (var product in Model)
+
+            {
+                <tr style="border: 2px solid black;">
+                    <td>@product.ProductID</td>
+                    <td>@product.Name</td>
+                    <td>@product.Price</td>
+                    <td>@product.Catagory</td>
+                    <td>@product.Availability</td>
+                </tr>
+
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3">No products found.</td>
+            </tr>
+        }

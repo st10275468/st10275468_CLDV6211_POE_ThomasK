@@ -41,12 +41,25 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
            
 
             return View(orders);
+
+        }
+        public IActionResult ProductsOrders()
+        {
+            int? UserID = _httpContextAccessor.HttpContext.Session.GetInt32("UserID");
+            List<MyProductsOrders> productOrders = MyProductsOrders.GetMyProductsOrders(UserID);
+
+            return View(productOrders);
         }
         public IActionResult AboutUs()
         {
             return View();
         }
-       
+        public IActionResult MyProductsPage()
+        {
+            int? userID = _httpContextAccessor.HttpContext.Session.GetInt32("UserID");
+            List<MyProducts> myProducts = MyProducts.GetMyProducts(userID);
+            return View(myProducts);
+        }
 
         public IActionResult ContactUs()
         {

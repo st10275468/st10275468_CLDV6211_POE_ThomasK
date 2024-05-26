@@ -10,8 +10,8 @@ namespace st10275468_CLDV6211_POE_ThomasK
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-           
 
+            builder.Services.AddHttpContextAccessor();
             builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(Options =>

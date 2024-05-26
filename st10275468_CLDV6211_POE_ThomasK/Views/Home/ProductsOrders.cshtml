@@ -1,0 +1,37 @@
+﻿@model List<st10275468_CLDV6211_POE_ThomasK.Models.MyProductsOrders>
+@{
+    ViewData["Title"] = "ProductsOrders";
+    var productsOrders = ViewData["ProductsOrders"] as List<st10275468_CLDV6211_POE_ThomasK.Models.MyProductsOrders>;
+}
+<table class="table">
+    <thead>
+        <tr style="border: 2px solid black;">
+            <th>Order ID</th>
+            <th>Product ID</th>
+            <th>User ID</th>
+            <th>Product</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var productOrder in Model)
+
+            {
+                <tr style="border: 2px solid black;">
+                    <td>@productOrder.OrderID</td>
+                    <td>@productOrder.ProductID</td>
+                    <td>@productOrder.UserID</td>
+                    <td>@productOrder.ProductName</td>
+                    <td>@productOrder.Price</td>
+                </tr>
+
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3">No orders found.</td>
+            </tr>
+        }

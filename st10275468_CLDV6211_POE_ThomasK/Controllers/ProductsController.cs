@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using st10275468_CLDV6211_POE_ThomasK.Models;
-
+using Microsoft.AspNetCore.Identity;
 namespace st10275468_CLDV6211_POE_ThomasK.Controllers
 {
     public class ProductsController : Controller
