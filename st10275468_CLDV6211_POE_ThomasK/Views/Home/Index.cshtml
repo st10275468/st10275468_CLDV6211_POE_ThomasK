@@ -5,7 +5,7 @@
     ViewData["Title"] = "Home Page";
     var UserID = ViewData["UserID"];
     var products = ViewData["Products"] as List<st10275468_CLDV6211_POE_ThomasK.Models.Products>;
-    
+    var UserName = ViewData["UserName"];
 }
 
 
@@ -29,10 +29,10 @@
 
     .p1 {
         text-align: left;
-        font-size: 30px;
+        font-size: 20x;
         margin-left: 400px;
         margin-right: 200px;
-        padding-top: 50px;
+        padding-top: 30px;
     }
 
     .p2 {
@@ -51,7 +51,7 @@
     .input{
         
         font-size: 15px;
-       
+       padding-top:10px;
         margin-left: 400px;
       
        
@@ -59,14 +59,27 @@
 
     .input2 {
         font-size: 15px;
+        padding-top: 10px;
         margin-left: 400px;
         
     }
     .p4{
-       padding-top:100px;
+       padding-top:5px;
         margin-left: 400px;
        color: black;
         font-size: 20px;
+    }
+    .p5{
+        padding-top: 20px;
+        margin-left: 400px;
+        color: black;
+        font-size: 20px;
+    }
+    .error-message{
+        font-size:20px;
+        padding-left:400px;
+        padding-top:10px;
+        -webkit-text-fill-color:red;
     }
 </style>
 
@@ -81,16 +94,19 @@
     
     <p><em>Shop the Finest Handcrafted Goods</em></p>
     </div>
+
    
-
-    <div >
-       
-
+   
+   
 
 
         @if (UserID == null)
         {
-            <p4 class="p4">Sign up:</p4>
+        <p class="p1">To access our full range of features or purchase products, please create an account or login below.</p>
+            <div class="p4">
+
+            <p4>Create an account:</p4>
+            </div>
             <div class="input">
                
                 <form asp-controller="User" asp-action="About" method="post">
@@ -102,9 +118,9 @@
 
                     <button type="submit">Submit</button></form>
             </div>
-
-            <p4 class="p4">Login:</p4>
-
+            <div class="p5"> 
+            <p4>Login:</p4>
+         </div>
             <div class="input2">
             <form asp-controller="Login" asp-action="Log" method="post">
                 
@@ -115,11 +131,17 @@
             </div>
         }
        
-    </div>
+    
     @if (UserID != null)
     {
-        <p2>User ID: @UserID</p2>
+        <p class="p1">Welcome, @UserName! Discover what's new and enhance your experience with our latest features.</p>
 
+    }
+    @if (TempData["InvalidLogin"] != null && (bool)TempData["InvalidLogin"])
+    {
+        <div class="error-message">
+            Invalid username or password. Please try again.
+        </div>
     }
 </body>
 

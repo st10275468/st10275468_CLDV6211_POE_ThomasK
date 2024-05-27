@@ -5,7 +5,17 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
 {
     public class UserController : Controller
     {
-       public Users userTbl = new Users();
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        public UserController(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
+        private void SetUserIDInViewData()
+        {
+            int? UserID = _httpContextAccessor.HttpContext.Session.GetInt32("UserID");
+            ViewData["UserID"] = UserID;
+        }
+        public Users userTbl = new Users();
 
         [HttpPost]
         public ActionResult About(Users users)
@@ -17,16 +27,19 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
         [HttpGet]
         public ActionResult About()
         {
+            SetUserIDInViewData();
             return View(userTbl);
         }
       
 
         public IActionResult Index()
         {
+            SetUserIDInViewData();
             return View();
         }
         public IActionResult AboutUs()
         {
+            SetUserIDInViewData();
             return View();
         }
     }

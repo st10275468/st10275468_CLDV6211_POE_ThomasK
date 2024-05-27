@@ -3,18 +3,45 @@
     ViewData["Title"] = "MyProductsPage";
     var products = ViewData["MyProducts"] as List<st10275468_CLDV6211_POE_ThomasK.Models.MyProducts>;
 }
-<h2>Your uploaded products</h2>
+<style>
+    body {
+        background-image: url("/Images/MyWorkBackground.jpg");
+        background-size: 100% 100vh;
+        background-repeat: no-repeat;
+    }
+    td {
+        border: 2px solid black;
+    }
+
+    th {
+        border: 2px solid Black;
+    }
+
+    h1 {
+        text-align: center;
+        padding-top: 20px;
+        font-size: 50px;
+    }
+
+    table {
+        background-color: floralwhite;
+        font-size:20px;
+    }
+</style>
+<h1><b>My uploaded products:</b></h1>
+<body>
+<tbody>
 <table class="table">
     <thead>
         <tr style="border: 2px solid black;">
-            <th>Product ID</th>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Availability</th>
+            <th><b>Product ID:</b></th>
+            <th><b>Product:</b></th>
+            <th><b>Price:</b></th>
+            <th><b>Category:</b></th>
+            <th><b>Stock:</b></th>
         </tr>
     </thead>
-    <tbody>
+   
         @if (Model != null && Model.Count > 0)
         {
 
@@ -26,7 +53,13 @@
                     <td>@product.Name</td>
                     <td>@product.Price</td>
                     <td>@product.Catagory</td>
-                    <td>@product.Availability</td>
+                    @if(product.Availability == "True"){
+                        <td>Yes</td>
+                    }
+                    else
+                    {
+                        <td>No</td>
+                    }
                 </tr>
 
             }
@@ -37,3 +70,5 @@
                 <td colspan="3">No products found.</td>
             </tr>
         }
+        </table>
+        </body>

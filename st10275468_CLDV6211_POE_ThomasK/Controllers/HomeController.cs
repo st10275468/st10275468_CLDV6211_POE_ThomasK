@@ -15,26 +15,35 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
             _logger = logger;
             _httpContextAccessor = httpContextAccessor;
         }
-
-        public IActionResult Index()
+        private void SetUserIDInViewData()
         {
             int? UserID = _httpContextAccessor.HttpContext.Session.GetInt32("UserID");
             ViewData["UserID"] = UserID;
-            return View();
-            
         }
+        public IActionResult Index()
+        {
+            SetUserIDInViewData();
+            string UserName = _httpContextAccessor.HttpContext.Session.GetString("UserName");
+            
+            ViewData["UserName"] = UserName;
+            
+            return View();
+
+        }
+      
 
         public IActionResult ShopProducts()
         {
-            var userID = HttpContext.User.Identity.Name;
+            SetUserIDInViewData();
             List<Products> products = Products.GetProducts();
             ViewData["products"] = products;
-            ViewData["UserID"] = userID;
+            
 
             return View();
         }
         public IActionResult MyOrders()
         {
+            SetUserIDInViewData();
             int? UserID = _httpContextAccessor.HttpContext.Session.GetInt32("UserID");
             List<Orders> orders = Orders.GetOrders(UserID);
             
@@ -45,17 +54,21 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
         }
         public IActionResult ProductsOrders()
         {
+            SetUserIDInViewData();
             int? UserID = _httpContextAccessor.HttpContext.Session.GetInt32("UserID");
             List<MyProductsOrders> productOrders = MyProductsOrders.GetMyProductsOrders(UserID);
 
             return View(productOrders);
         }
         public IActionResult AboutUs()
+
         {
+            SetUserIDInViewData();
             return View();
         }
         public IActionResult MyProductsPage()
         {
+            SetUserIDInViewData();
             int? userID = _httpContextAccessor.HttpContext.Session.GetInt32("UserID");
             List<MyProducts> myProducts = MyProducts.GetMyProducts(userID);
             return View(myProducts);
@@ -63,11 +76,13 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
 
         public IActionResult ContactUs()
         {
+            SetUserIDInViewData();
             return View();
         }
 
         public IActionResult MyWork()
         {
+            SetUserIDInViewData();
             return View();
         }
       
@@ -77,6 +92,7 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            SetUserIDInViewData();
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

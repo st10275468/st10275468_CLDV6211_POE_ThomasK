@@ -5,31 +5,37 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly Login loginM;
+        
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public LoginController()
+        public LoginController(IHttpContextAccessor httpContextAccessor)
         {
-            loginM = new Login();
+            _httpContextAccessor = httpContextAccessor;
         }
+       
 
         [HttpPost]
         public ActionResult Log(string name, string password)
         {
+
             var loginModel = new Login();
             int userID = loginModel.SelectUser(name, password);
             if (userID != -1)
             {
 
-                HttpContext.Session.SetInt32("UserID", userID);
+               HttpContext.Session.SetInt32("UserID", userID);
+                _httpContextAccessor.HttpContext.Session.SetString("UserName", name);
                 return RedirectToAction("Index", "Home");
 
             }
             else
             {
-                return View("LoginFailed");
+                TempData["InvalidLogin"] = true;
+                return RedirectToAction("Index","Home");
             }
 
         }
+
 
         
     }

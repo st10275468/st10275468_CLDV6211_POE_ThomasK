@@ -14,9 +14,9 @@
 
     h1 {
         text-align: center;
-        padding-left: 135px;
+        padding-left: 270px;
         padding-top: 20px;
-        font-size: 60px;
+        font-size: 50px;
     }
 
     h2 {
@@ -50,10 +50,11 @@
         -webkit-text-fill-color: white;
     }
     .tb {
-        padding-left: 300px;
-        padding-top: 20px;
-        font-size:25px;
         
+        margin-top: 20px;
+        margin-left: 300px;
+        font-size:20px;
+        background-color:floralwhite;
         
     }
 
@@ -77,17 +78,17 @@
 <html>
 
 <body>
-    <h1>Explore our handcrafted products below</h1>
+    <h1><b>Explore our handcrafted products below:</b></h1>
     <div class="tb">
         
         <table class="table">
             <thead>
                 <tr style="border: 2px solid black;">
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Category</th>
-                    <th>In stock</th>
-                    <th>Order</th>
+                    <th><b>Name:</b></th>
+                    <th><b>Price:</b></th>
+                    <th><b>Category:</b></th>
+                    <th><b>In stock:</b></th>
+                    <th><b>Order:</b></th>
                 </tr>
             </thead>
             <tbody>
@@ -99,7 +100,7 @@
                         <td>@product.Catagory</td>
 
                         
-                            @if (product.Availability == "True")
+                            @if (product.Availability == 1)
                         {
                             <td>Yes</td>
                             <td>

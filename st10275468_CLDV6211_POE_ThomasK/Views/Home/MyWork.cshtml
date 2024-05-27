@@ -21,7 +21,7 @@
         h1 {
             text-align: center;
             padding-top: 20px;
-            font-size: 45px;
+            font-size: 60px;
         }
 
         h2 {
@@ -37,24 +37,35 @@
         }
 
         .div1 {
-            background-color: black;
-            position: absolute;
-            left: 0;
-            right: 0;
-            padding-top: 100px;
-            padding-right: 20px;
-            padding-left: 20px;
-            padding-bottom: 20px;
-            display: flex;
+           
+           
+            margin:5px;
+            padding-top: 30px;
+            padding-left: 295px;
+           
+          
+        }
+
+        .div2 {
+          
+            padding-top: 30px;
+            padding-left: 300px;
+            
         }
 
         .p1 {
-            text-align: left;
-            padding-top: 10px;
-            padding-left: 10px;
-            -webkit-text-fill-color: white;
+            font-size:25px;
+          padding-right: 635px;
+          
+            
+            padding-top: 50px;
+            
+           
         }
+        .tbl{
+            padding-left:300px;
 
+        }
 
 
 
@@ -66,32 +77,50 @@
     </style>
     </head>
 
+
 <body>
-    <h1>Work</h1>
-    <form asp-controller="Products" asp-action="MyWork" method="post">
-        <p>Insert new products</p>
+    <h1><b>My Work:</b></h1>
+    <p class="p1"><b>Upload new products:</b></p>
+    <form asp-controller="Products" asp-action="MyWork" method="post" class="tbl">
+        
         <input type="text" name="Name" placeholder="Name" required>
-        <input type="text" name="Availability" placeholder="Availability" required>
         <input type="text" name="Price" placeholder="Price" required>
-        <input type="text" name="Catagory" placeholder="Catagory" required>
+        <input type="text" name="Catagory" placeholder="Category" required>
+        <select name="Availability" required>
+            <option value="0">Out of stock</option>
+            <option value="1">In stock</option>
+        </select>
         <button type="submit">Submit</button>
 
     </form>
    
-</body>
+
+
+    <div class="div1">
+        <button onclick="MyProducts()">View my products</button>
+
+        <script>
+            function MyProducts() {
+
+                window.location.href = 'MyProductsPage';
+            }
+        </script>
+    </div>
 
 
 
 
-
-<body>
-    <button onclick="navigateToPage()">View my product sales</button>
+   
+    <div class="div2">
+    <button onclick="ProductSales()">View my product sales</button>
 
     <script>
-        function navigateToPage() {
-            // Replace 'another-page.html' with the URL of the page you want to navigate to
+        function ProductSales() {
+           
             window.location.href = 'ProductsOrders';
         }
     </script>
+    </div>
+   
 </body>
 

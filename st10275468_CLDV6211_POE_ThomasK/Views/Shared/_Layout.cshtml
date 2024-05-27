@@ -1,4 +1,6 @@
-﻿
+﻿@{
+    var UserID = ViewData["UserID"];
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,16 +30,15 @@
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="ShopProducts">Products</a>
                             </li>
-
+                            @if (UserID != null){
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="MyWork">My Work</a>
                             </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="MyOrders">My Orders</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="MyProductsPage">My Products</a>
-                        </li>
+                            } 
+                            
                     </ul>
                     <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
@@ -47,6 +48,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
                             </li>
+                            
                      </ul>
                 </div>
             </div>

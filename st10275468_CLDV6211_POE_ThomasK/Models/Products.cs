@@ -19,7 +19,7 @@ namespace st10275468_CLDV6211_POE_ThomasK.Models
         public string Name { get; set; }
         public string Price { get; set; }
         public string Catagory { get; set; }
-        public string Availability {  get; set; }
+        public int Availability {  get; set; }
 
         public int? UserID { get; set; }
 
@@ -27,7 +27,7 @@ namespace st10275468_CLDV6211_POE_ThomasK.Models
         public int insert_product(Products p, int? UserID)
         {
 
-            string sql = "INSERT INTO Products (ProductName, Availability, Price, Catagory, UserID) VALUES (@Name, @Availability, @Price, @Catagory, @UserID)";
+            string sql = "INSERT INTO Products (ProductName, Price, Catagory, Availability, UserID) VALUES (@Name, @Price, @Catagory, @Availability, @UserID)";
             try
             {
                 using (SqlConnection con = new SqlConnection(con_string))
@@ -36,9 +36,9 @@ namespace st10275468_CLDV6211_POE_ThomasK.Models
                     {
 
                         cmd.Parameters.AddWithValue("@Name", p.Name);
-                        cmd.Parameters.AddWithValue("@Availability", p.Availability);
                         cmd.Parameters.AddWithValue("@Price", p.Price);
                         cmd.Parameters.AddWithValue("@Catagory", p.Catagory);
+                        cmd.Parameters.AddWithValue("@Availability", p.Availability);
                         cmd.Parameters.AddWithValue("@UserID", UserID);
 
                         con.Open();
@@ -82,7 +82,7 @@ namespace st10275468_CLDV6211_POE_ThomasK.Models
                     product.Name = r["ProductName"].ToString();
                     product.Price = r["Price"].ToString();
                     product.Catagory = r["Catagory"].ToString();
-                    product.Availability = r["Availability"].ToString();
+                    product.Availability = Convert.ToInt32(r["Availability"]);
 
                     products.Add(product);
                 }

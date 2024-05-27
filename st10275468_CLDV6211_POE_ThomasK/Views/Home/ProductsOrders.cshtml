@@ -3,17 +3,53 @@
     ViewData["Title"] = "ProductsOrders";
     var productsOrders = ViewData["ProductsOrders"] as List<st10275468_CLDV6211_POE_ThomasK.Models.MyProductsOrders>;
 }
+<style>
+    body {
+        background-image: url("/Images/MyWorkBackground.jpg");
+        background-size: 100% 100vh;
+        background-repeat: no-repeat;
+    }
+    td {
+        border: 2px solid black;
+    }
+
+    th {
+        border: 2px solid Black;
+    }
+
+    h1 {
+        text-align: center;
+        padding-top: 20px;
+        font-size: 50px;
+    }
+
+    .tb {
+        
+        font-size: 20px;
+        background-color: floralwhite;
+    }
+
+    table {
+        font-size: 20px;
+        background-color: floralwhite;
+    }
+</style>
+<tbody>
+<h1><b>My product sales:</b></h1>
+<div class="tb">
 <table class="table">
     <thead>
         <tr style="border: 2px solid black;">
-            <th>Order ID</th>
-            <th>Product ID</th>
-            <th>User ID</th>
-            <th>Product</th>
-            <th>Price</th>
+            <th><b>Reference number:</b></th>
+            <th><b>User ID:</b></th>
+            <th><b>Product ID:</b></th>
+            <th><b>Product:</b></th>
+            <th><b>Price:</b></th>
         </tr>
     </thead>
-    <tbody>
+
+</div>
+    
         @if (Model != null && Model.Count > 0)
         {
             foreach (var productOrder in Model)
@@ -21,8 +57,8 @@
             {
                 <tr style="border: 2px solid black;">
                     <td>@productOrder.OrderID</td>
-                    <td>@productOrder.ProductID</td>
                     <td>@productOrder.UserID</td>
+                    <td>@productOrder.ProductID</td>
                     <td>@productOrder.ProductName</td>
                     <td>@productOrder.Price</td>
                 </tr>
@@ -35,3 +71,5 @@
                 <td colspan="3">No orders found.</td>
             </tr>
         }
+       </table>
+</tbody>

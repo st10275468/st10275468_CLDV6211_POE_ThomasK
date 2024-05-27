@@ -17,7 +17,7 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
             int? UserID = HttpContext.Session.GetInt32("UserID");
             var result2 = producttbl.insert_product(Products, UserID);
            
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("MyWork", "Home");
 
 
         }

@@ -14,6 +14,11 @@ namespace st10275468_CLDV6211_POE_ThomasK.Controllers
         public ActionResult PlaceOrder(string userID, int productID)
         {
             UserID = httpContextAccessor.HttpContext.Session.GetInt32("UserID");
+            if (!UserID.HasValue)
+            {
+
+                return RedirectToAction("Index", "Home");
+            }
             try
             {
                 

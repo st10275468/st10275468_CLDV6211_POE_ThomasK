@@ -3,16 +3,41 @@
     ViewData["Title"] = "MyOrders";
     var orders = ViewData["Orders"] as List<st10275468_CLDV6211_POE_ThomasK.Models.Orders>;
 }
+<style>
+    body {
+        background-image: url("/Images/MyWorkBackground.jpg");
+        background-size: 100% 100vh;
+        background-repeat: no-repeat;
+    }
+    td {
+        border: 2px solid black;
+    }
+    table{
+        background-color: floralwhite;
+        font-size: 20px;
+    }
+    th {
+        border: 2px solid Black;
+    }
+
+    h1 {
+        text-align: center;
+        padding-top: 20px;
+        font-size: 50px;
+    }
+</style>
+<h1><b>My orders:</b></h1>
+<tbody>
 <table class="table">
     <thead>
         <tr style="border: 2px solid black;">
-            <th>Order number</th>
-            <th>Product number</th>
-            <th>Product</th>
-            <th>Price</th>
+            <th><b>Reference number:</b></th>
+            <th><b>Product ID:</b></th>
+            <th><b>Product:</b></th>
+            <th><b>Price:</b></th>
          </tr>
     </thead>
-    <tbody>
+    
         @if (Model != null && Model.Count > 0)
         {
             foreach (var order in Model)
@@ -34,6 +59,5 @@
             </tr>
         }
 
-
-    </tbody>
 </table>
+    </tbody>
