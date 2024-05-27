@@ -57,7 +57,7 @@ namespace st10275468_CLDV6211_POE_ThomasK.Models
             }
             catch (Exception ex)
             {
-                // Handle all other exceptions here
+               
                 Console.Error.WriteLine($"Error: {ex.Message}");
                 throw;
             }
